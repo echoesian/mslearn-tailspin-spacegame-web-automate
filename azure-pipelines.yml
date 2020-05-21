@@ -107,12 +107,12 @@ stages:
           ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
     - deployment: Deploy
       dependsOn: Provision
-        variables:
+      variables:
           WebAppNameDev: $[ dependencies.Provision.outputs['RunTerraform.WebAppNameDev'] ]
-        pool:
+      pool:
           vmImage: 'ubuntu-16.04'
-        environment: dev
-        strategy:
+      environment: dev
+      strategy:
           runOnce:
             deploy:
               steps:
