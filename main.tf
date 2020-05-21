@@ -1,7 +1,14 @@
-terraform {
-  required_version = "> 0.12.0"
+provider "azurerm" {
+  version = "=2.0.0"
+  features {}
+}
 
-  backend "azurerm" {
+terraform {
+    backend "azurerm" {
+    resource_group_name  = "tf-storage-rg"
+    storage_account_name = "tfsa32006"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
   }
 }
 
